@@ -11,6 +11,8 @@ export enum Page {
   Donate,
   GetInvolved,
   Contact,
+  ImpactStories,
+  Blog,
 }
 
 declare global {

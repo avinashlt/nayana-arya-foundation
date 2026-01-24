@@ -3,6 +3,7 @@ import '../types';
 import React from 'react';
 import { Page } from '../types';
 import Logo from './Logo';
+import NewsletterSubscription from './NewsletterSubscription';
 
 interface FooterProps {
   onNavigate: (page: Page) => void;
@@ -13,30 +14,44 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     { label: 'Home', page: Page.Home },
     { label: 'About Us', page: Page.About },
     { label: 'Programs', page: Page.Programs },
+    { label: 'Impact', page: Page.ImpactStories },
+    { label: 'Blog', page: Page.Blog },
     { label: 'Get Involved', page: Page.GetInvolved },
     { label: 'Contact', page: Page.Contact },
   ];
 
   const socialLinks = [
-    { name: 'logo-facebook', href: '#' },
-    { name: 'logo-twitter', href: '#' },
-    { name: 'logo-instagram', href: '#' },
-    { name: 'logo-linkedin', href: '#' },
+    { name: 'logo-facebook', href: 'https://facebook.com', label: 'Facebook' },
+    { name: 'logo-twitter', href: 'https://twitter.com', label: 'Twitter' },
+    { name: 'logo-instagram', href: 'https://instagram.com', label: 'Instagram' },
+    { name: 'logo-linkedin', href: 'https://linkedin.com', label: 'LinkedIn' },
   ];
 
   return (
-    <footer className="bg-ocean-blue-900 text-white">
+    <footer className="bg-ocean-blue-900 text-white" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Newsletter Section */}
+        <div className="mb-12 pb-12 border-b border-ocean-blue-800">
+          <NewsletterSubscription variant="footer" />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <div className="flex items-center mb-2">
-              <Logo className="h-9 w-auto" />
+              <Logo className="h-9 w-auto" aria-hidden="true" />
               <h2 className="ml-3 text-xl font-bold">Nayana Arya Foundation</h2>
             </div>
-            <p className="mt-2 text-ocean-blue-200">Creating vision for the children.</p>
+            <p className="mt-2 text-ocean-blue-200">Creating vision for the children through education, empowerment, and compassion.</p>
             <div className="flex space-x-4 mt-4">
               {socialLinks.map((link) => (
-                <a key={link.name} href={link.href} className="text-ocean-blue-200 hover:text-white transition duration-300">
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  className="text-ocean-blue-200 hover:text-white transition duration-300 focus:ring-2 focus:ring-warm-amber-400 rounded p-2"
+                  aria-label={link.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <ion-icon name={link.name} class="text-2xl"></ion-icon>
                 </a>
               ))}
@@ -47,9 +62,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="mt-4 space-y-2">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a href="#" onClick={(e) => { e.preventDefault(); onNavigate(link.page); }} className="text-ocean-blue-200 hover:text-white transition duration-300">
+                  <button 
+                    onClick={() => onNavigate(link.page)}
+                    className="text-ocean-blue-200 hover:text-white transition duration-300 focus:outline-none focus:underline"
+                  >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -57,9 +75,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="text-lg font-semibold tracking-wider uppercase">Contact Us</h3>
             <ul className="mt-4 space-y-2 text-ocean-blue-200">
-              <li>21 2nd Main KR Garden Murugeshpalaya, Bengaluru 560017</li>
-              <li>admin@nayanaaryafoundation.org</li>
-              <li>+91 8310551091</li>
+              <li>📍 21 2nd Main KR Garden Murugeshpalaya, Bengaluru 560017</li>
+              <li><a href="mailto:admin@nayanaaryafoundation.org" className="hover:text-white transition">📧 admin@nayanaaryafoundation.org</a></li>
+              <li><a href="tel:+918310551091" className="hover:text-white transition">📞 +91 8310551091</a></li>
             </ul>
           </div>
           <div>
@@ -74,7 +92,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
         <div className="mt-12 border-t border-ocean-blue-800 pt-8 text-center text-ocean-blue-300">
-          <p>&copy; {new Date().getFullYear()} Nayana Arya Foundation. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Nayana Arya Foundation. All rights reserved. | NGO dedicated to creating vision for children.</p>
         </div>
       </div>
     </footer>
