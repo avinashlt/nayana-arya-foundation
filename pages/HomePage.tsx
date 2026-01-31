@@ -85,7 +85,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-white/90 drop-shadow-md">{slide.subtitle}</p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                   <Button onClick={() => onNavigate(Page.Donate)} size="lg" aria-label="Go to donate page">Donate Now</Button>
-                  <Button onClick={() => onNavigate(Page.GetInvolved)} variant="outline" size="lg" aria-label="Go to get involved page">Volunteer</Button>
+                  <Button onClick={() => onNavigate(Page.GetInvolved)} variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-neutral-900 focus:ring-white" aria-label="Go to get involved page">Volunteer</Button>
                 </div>
               </div>
             </div>
@@ -175,7 +175,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 caption: '🌟 Every Child Deserves a Chance',
               },
               {
-                src: 'https://images.unsplash.com/photo-1488521787991-ed67d2f0cbae?w=1200&h=500&fit=crop',
+                src: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&h=500&fit=crop',
                 alt: 'Celebration of achievements',
                 caption: '🎯 Celebrating Every Success',
               },
