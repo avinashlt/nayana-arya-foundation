@@ -28,10 +28,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <footer className="bg-ocean-blue-900 text-white" role="contentinfo">
+    <footer className="bg-neutral-900 text-white" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Newsletter Section */}
-        <div className="mb-12 pb-12 border-b border-ocean-blue-800">
+        <div className="mb-12 pb-12 border-b border-neutral-800">
           <NewsletterSubscription variant="footer" />
         </div>
 
@@ -41,13 +41,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <Logo className="h-9 w-auto" aria-hidden="true" />
               <h2 className="ml-3 text-xl font-bold">Nayana Arya Foundation</h2>
             </div>
-            <p className="mt-2 text-ocean-blue-200">Creating vision for the children through education, empowerment, and compassion.</p>
+            <p className="mt-2 text-neutral-400">Creating vision for the children through education, empowerment, and compassion.</p>
             <div className="flex space-x-4 mt-4">
               {socialLinks.map((link) => (
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  className="text-ocean-blue-200 hover:text-white transition duration-300 focus:ring-2 focus:ring-warm-amber-400 rounded p-2"
+                  className="text-neutral-400 hover:text-primary-red-500 transition duration-300 focus:ring-2 focus:ring-primary-red-500 rounded p-2"
                   aria-label={link.label}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -64,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <li key={link.label}>
                   <button 
                     onClick={() => onNavigate(link.page)}
-                    className="text-ocean-blue-200 hover:text-white transition duration-300 focus:outline-none focus:underline"
+                    className="text-neutral-400 hover:text-primary-red-500 transition duration-300 focus:outline-none focus:underline"
                   >
                     {link.label}
                   </button>
@@ -74,15 +74,15 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
           <div>
             <h3 className="text-lg font-semibold tracking-wider uppercase">Contact Us</h3>
-            <ul className="mt-4 space-y-2 text-ocean-blue-200">
+            <ul className="mt-4 space-y-2 text-neutral-400">
               <li>📍 21 2nd Main KR Garden Murugeshpalaya, Bengaluru 560017</li>
-              <li><a href="mailto:admin@nayanaaryafoundation.org" className="hover:text-white transition">📧 admin@nayanaaryafoundation.org</a></li>
-              <li><a href="tel:+918310551091" className="hover:text-white transition">📞 +91 8310551091</a></li>
+              <li><a href="mailto:admin@nayanaaryafoundation.org" className="hover:text-primary-red-500 transition">📧 admin@nayanaaryafoundation.org</a></li>
+              <li><a href="tel:+918310551091" className="hover:text-primary-red-500 transition">📞 +91 8310551091</a></li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold tracking-wider uppercase">Our Promise</h3>
-            <p className="mt-4 text-ocean-blue-200">
+            <p className="mt-4 text-neutral-400">
               Your donations are securely processed. We are committed to financial transparency and making a real impact.
             </p>
              <div className="mt-4 flex items-center space-x-2">
@@ -91,7 +91,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
           </div>
         </div>
-        <div className="mt-12 border-t border-ocean-blue-800 pt-8 text-center text-ocean-blue-300">
+        <div className="mt-12 border-t border-neutral-800 pt-8 text-center text-neutral-500">
           <p>&copy; {new Date().getFullYear()} Nayana Arya Foundation. All rights reserved. | NGO dedicated to creating vision for children.</p>
         </div>
       </div>

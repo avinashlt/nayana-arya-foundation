@@ -50,10 +50,10 @@ const ProgramsPage: React.FC = () => {
             <h2 className="text-3xl font-bold text-ocean-blue-800">See Our Work in Action</h2>
             <p className="mt-2 text-lg text-gray-600">Photos of our dedicated volunteers and happy children.</p>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-                <img src="https://images.unsplash.com/photo-1594732162453-5332f91e9914?q=80&w=500&auto=format&fit=crop" alt="Volunteers working with children" className="rounded-lg shadow-md aspect-square object-cover"/>
-                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=500&auto=format&fit=crop" alt="Child using assistive technology" className="rounded-lg shadow-md aspect-square object-cover"/>
-                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=500&auto=format&fit=crop" alt="Group activity at a rural center" className="rounded-lg shadow-md aspect-square object-cover"/>
-                <img src="https://images.unsplash.com/photo-1504813535235-ea265b893a95?q=80&w=500&auto=format&fit=crop" alt="A smiling child holding a book" className="rounded-lg shadow-md aspect-square object-cover"/>
+                <img src="https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?q=80&w=500&auto=format&fit=crop" alt="Indian volunteers working with children" className="rounded-lg shadow-md aspect-square object-cover"/>
+                <img src="https://images.unsplash.com/photo-1497375638960-ca368c7231e4?q=80&w=500&auto=format&fit=crop" alt="Indian child in classroom" className="rounded-lg shadow-md aspect-square object-cover"/>
+                <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=500&auto=format&fit=crop" alt="Indian children group activity" className="rounded-lg shadow-md aspect-square object-cover"/>
+                <img src="https://images.unsplash.com/photo-1488521787991-ed67d2f0cbae?q=80&w=500&auto=format&fit=crop" alt="Indian child smiling" className="rounded-lg shadow-md aspect-square object-cover"/>
             </div>
         </section>
       </div>

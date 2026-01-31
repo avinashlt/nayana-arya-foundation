@@ -58,7 +58,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col" role="application" aria-label="Nayana Arya Foundation Website">
+    <div className="bg-white text-neutral-900 font-sans min-h-screen flex flex-col" role="application" aria-label="Nayana Arya Foundation Website">
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
       <main className="flex-grow" id="main-content" role="main">
         {renderPage()}

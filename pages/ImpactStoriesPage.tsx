@@ -20,7 +20,7 @@ const IMPACT_STORIES: Story[] = [
     excerpt: 'How a visually impaired teenager discovered his passion for coding and now mentors others.',
     fullStory: 'Ravi was born with severe visual impairment, but that never stopped his curiosity. Thanks to our Technology & Accessibility Training program, he learned screen readers and programming languages. Today, at just 19, he\'s working as a junior developer and mentoring younger students.',
     category: 'technology',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1497375638960-ca368c7231e4?q=80&w=600&auto=format&fit=crop',
     author: 'Nayana Arya',
     date: 'December 2024',
     impact: 'Ravi is now self-employed and has helped 10+ children learn technology skills.'
@@ -31,7 +31,7 @@ const IMPACT_STORIES: Story[] = [
     excerpt: 'A young girl learns to navigate her world with confidence through our holistic education program.',
     fullStory: 'Maya came to us at age 8, isolated and withdrawn. Through our Early Intervention & Education program, she learned Braille, life skills, and gained the confidence to interact with her peers. Now she\'s a bright student in a mainstream school.',
     category: 'education',
-    image: 'https://images.unsplash.com/photo-1427504494785-cdaf8fcd84e1?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?q=80&w=600&auto=format&fit=crop',
     author: 'Rohan Verma',
     date: 'November 2024',
     impact: 'Maya is now thriving in mainstream education and helping other visually impaired children.'
@@ -42,7 +42,7 @@ const IMPACT_STORIES: Story[] = [
     excerpt: 'How our rural outreach centers are bringing education to underserved communities.',
     fullStory: 'In remote villages where there was no access to education for blind children, our outreach camps changed everything. We trained local teachers and established community centers. The first batch of 50 children is now receiving consistent education.',
     category: 'community',
-    image: 'https://images.unsplash.com/photo-1511314314988-a01aaad47c48?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=600&auto=format&fit=crop',
     author: 'Priya Singh',
     date: 'October 2024',
     impact: '50 rural children now have access to quality education programs.'
@@ -53,7 +53,7 @@ const IMPACT_STORIES: Story[] = [
     excerpt: 'Our partnership with hospitals ensures every child receives regular health check-ups.',
     fullStory: 'We conducted comprehensive health camps in partnership with leading hospitals. 200 children received eye examinations, health consultations, and referrals for advanced treatments. Early detection helped prevent further vision loss in 15 cases.',
     category: 'health',
-    image: 'https://images.unsplash.com/photo-1631217314830-f6f582b4ce21?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=600&auto=format&fit=crop',
     author: 'Anil Kumar',
     date: 'September 2024',
     impact: '200 children received comprehensive health check-ups and necessary treatments.'

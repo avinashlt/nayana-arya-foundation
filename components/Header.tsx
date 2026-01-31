@@ -23,8 +23,8 @@ const NavLink: React.FC<{
         e.preventDefault();
         onNavigate(page);
       }}
-      className={`text-lg font-medium transition duration-300 ${
-        isActive ? 'text-ocean-blue-600' : 'text-gray-600 hover:text-ocean-blue-600'
+      className={`text-base font-medium transition duration-300 ${
+        isActive ? 'text-primary-red-600' : 'text-neutral-600 hover:text-primary-red-600'
       } ${className}`}
     >
       {children}
@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
   ];
 
   return (
-    <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+    <header className="bg-white sticky top-0 z-50 shadow-md">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div
@@ -62,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
             aria-label="Nayana Arya Foundation Home"
           >
             <Logo className="h-10 w-auto" aria-hidden="true" />
-            <span className="ml-3 text-xl font-bold text-ocean-blue-800 hidden sm:block">
+            <span className="ml-3 text-xl font-bold text-primary-red-600 hidden sm:block">
               Nayana Arya Foundation
             </span>
           </div>
@@ -79,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-ocean-blue-600 focus:outline-none focus:ring-2 focus:ring-ocean-blue-500 rounded p-2"
+              className="text-neutral-600 hover:text-primary-red-600 focus:outline-none focus:ring-2 focus:ring-primary-red-500 rounded p-2"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMenuOpen}
             >
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
         </div>
       </div>
       {isMenuOpen && (
-        <nav className="lg:hidden bg-white border-t border-gray-200" aria-label="Mobile navigation">
+        <nav className="lg:hidden bg-white border-t border-neutral-200" aria-label="Mobile navigation">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <NavLink key={link.page} page={link.page} currentPage={currentPage} onNavigate={() => { onNavigate(link.page); setIsMenuOpen(false); }} className="block px-3 py-2" aria-current={currentPage === link.page ? 'page' : undefined}>

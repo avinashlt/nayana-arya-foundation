@@ -39,13 +39,13 @@ const NewsletterSubscription: React.FC<NewsletterSubscriptionProps> = ({ variant
           placeholder="Your email"
           value={email}
           onChange={(e) => { setEmail(e.target.value); setError(''); }}
-          className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ocean-blue-500 focus:border-transparent"
+          className="flex-1 px-4 py-2 rounded-lg border border-neutral-300 focus:ring-2 focus:ring-primary-red-500 focus:border-transparent"
           aria-label="Email address"
           required
         />
         <button
           type="submit"
-          className="bg-ocean-blue-600 text-white px-6 py-2 rounded-lg hover:bg-ocean-blue-700 transition font-medium"
+          className="bg-primary-red-600 text-white px-6 py-2 rounded-lg hover:bg-primary-red-700 transition font-medium"
           aria-label="Subscribe"
         >
           Subscribe
@@ -63,13 +63,13 @@ const NewsletterSubscription: React.FC<NewsletterSubscriptionProps> = ({ variant
             placeholder="Your email"
             value={email}
             onChange={(e) => { setEmail(e.target.value); setError(''); }}
-            className="flex-1 px-3 py-2 rounded-lg text-sm border border-gray-300 focus:ring-2 focus:ring-ocean-blue-400 focus:border-transparent"
+            className="flex-1 px-3 py-2 rounded-lg text-sm border border-neutral-600 focus:ring-2 focus:ring-primary-red-400 focus:border-transparent"
             aria-label="Email address"
             required
           />
           <button
             type="submit"
-            className="bg-warm-amber-500 text-white px-4 py-2 rounded-lg hover:bg-warm-amber-600 transition font-medium text-sm"
+            className="bg-primary-red-500 text-white px-4 py-2 rounded-lg hover:bg-primary-red-600 transition font-medium text-sm"
             aria-label="Subscribe"
           >
             Subscribe
@@ -83,10 +83,10 @@ const NewsletterSubscription: React.FC<NewsletterSubscriptionProps> = ({ variant
 
   // Default variant
   return (
-    <section className={`bg-gradient-to-r from-ocean-blue-600 to-ocean-blue-700 text-white rounded-lg p-8 md:p-12 ${className}`} aria-labelledby="newsletter-title">
+    <section className={`bg-gradient-to-r from-primary-red-600 to-primary-red-700 text-white rounded-lg p-8 md:p-12 shadow-lg ${className}`} aria-labelledby="newsletter-title">
       <div className="max-w-md">
         <h2 id="newsletter-title" className="text-3xl font-bold mb-3">Stay Updated</h2>
-        <p className="text-ocean-blue-100 mb-6">
+        <p className="text-red-100 mb-6">
           Subscribe to our newsletter to receive updates about our programs, impact stories, and opportunities to get involved.
         </p>
         
@@ -97,24 +97,24 @@ const NewsletterSubscription: React.FC<NewsletterSubscriptionProps> = ({ variant
               placeholder="Enter your email"
               value={email}
               onChange={(e) => { setEmail(e.target.value); setError(''); }}
-              className="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-warm-amber-400 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg text-neutral-900 focus:ring-2 focus:ring-white focus:outline-none"
               aria-label="Email address for newsletter"
               required
             />
-            {error && <p className="text-sm text-warm-amber-200 mt-2">{error}</p>}
+            {error && <p className="text-sm text-red-200 mt-2">{error}</p>}
           </div>
           
           <button
             type="submit"
             disabled={isSubscribed}
-            className="w-full bg-warm-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-warm-amber-600 transition disabled:bg-green-500 disabled:cursor-default"
+            className="w-full bg-white text-primary-red-600 py-3 rounded-lg font-semibold hover:bg-red-50 transition disabled:bg-green-500 disabled:text-white disabled:cursor-default"
             aria-label={isSubscribed ? 'Subscribed' : 'Subscribe'}
           >
             {isSubscribed ? '✓ Thank you for subscribing!' : 'Subscribe Now'}
           </button>
         </form>
 
-        <p className="text-xs text-ocean-blue-200 mt-4">
+        <p className="text-xs text-red-100 mt-4">
           We respect your privacy. Unsubscribe at any time.
         </p>
       </div>
