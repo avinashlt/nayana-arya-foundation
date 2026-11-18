@@ -1,185 +1,111 @@
 import '../types';
 import React, { useState } from 'react';
+import { BLOG_ARTICLES, BlogPost } from '../constants';
 
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  date: string;
-  category: 'announcement' | 'article' | 'report' | 'news';
-  image: string;
-  readTime: number;
-  tags: string[];
-}
+const CATEGORY_COLORS: Record<string, string> = {
+  announcement: 'bg-ocean-blue-100 text-ocean-blue-800',
+  article: 'bg-purple-100 text-purple-800',
+  report: 'bg-green-100 text-green-800',
+  news: 'bg-warm-amber-100 text-warm-amber-800',
+  event: 'bg-primary-red-100 text-primary-red-800',
+};
 
-const BLOG_ARTICLES: BlogPost[] = [
-  {
-    id: 1,
-    title: 'Bengaluru Tech Firms Partner with Us for Digital Literacy Drive',
-    excerpt: 'Leading tech companies in Bengaluru are joining hands with us to provide visually impaired children with cutting-edge assistive technology and coding skills.',
-    content: `Leading tech companies in Bengaluru have come together for an unprecedented digital literacy initiative. In partnership with our foundation, companies like TCS, Infosys, and Wipro are providing:
-    
-- Professional mentors for coding bootcamps
-- Donated hardware and software licenses
-- Internship opportunities for our graduates
-- Scholarship programs for advanced training
-
-This collaboration marks a significant milestone in our mission. Over the past three months, we\'ve trained 50 children in basic programming, web development, and digital entrepreneurship. The response has been overwhelming, with 80% of participants expressing interest in pursuing technology careers.
-
-Our newest batch of students is already working on real-world projects, developing accessible web applications and mobile apps. This hands-on experience is invaluable and opens doors to employment opportunities that were previously unavailable.`,
-    author: 'Nayana Arya',
-    date: 'December 15, 2024',
-    category: 'announcement',
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop',
-    readTime: 5,
-    tags: ['Technology', 'Partnership', 'Education'],
-  },
-  {
-    id: 2,
-    title: 'Annual Impact Report 2024: Key Achievements and Milestones',
-    excerpt: 'Our 2024 annual report showcases our achievements, financial transparency, and future roadmap. See how your donations made a difference.',
-    content: `2024 has been a transformative year for Nayana Arya Foundation. Our annual impact report reveals:
-
-**Key Metrics:**
-- 500+ children benefited from our programs
-- 150+ active volunteers contributed 5,000+ hours
-- 25+ community centers established in rural areas
-- 90% success rate in mainstream school enrollment
-
-**Financial Highlights:**
-- Total donations received: ₹1.5 Crores
-- Program expenses: ₹1.2 Crores (80%)
-- Administrative costs: ₹0.3 Crores (20%)
-- Zero debt, fully operational
-
-**New Initiatives Launched:**
-1. Rural Outreach Expansion Program
-2. Technology Skills Bootcamp
-3. Health and Wellness Initiative
-4. Parent Support and Counseling Services
-
-Our commitment to transparency means every rupee you donate is tracked and accounted for. Download our full annual report on our website.`,
-    author: 'Anil Kumar (CFO)',
-    date: 'December 10, 2024',
-    category: 'report',
-    image: 'https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?q=80&w=800&auto=format&fit=crop',
-    readTime: 8,
-    tags: ['Annual Report', 'Transparency', 'Impact'],
-  },
-  {
-    id: 3,
-    title: 'Understanding Assistive Technology: A Guide for Caregivers',
-    excerpt: 'Learn about the assistive technologies that are changing the lives of visually impaired children and how caregivers can support their use.',
-    content: `Assistive technology has revolutionized the way visually impaired individuals interact with the world. This comprehensive guide covers:
-
-**Screen Readers:**
-JAWS, NVDA, and VoiceOver are screen readers that convert text to speech or Braille. They allow users to navigate computers and smartphones independently.
-
-**Magnification Software:**
-For those with low vision, magnification tools can enlarge content on screens, making reading and computing more accessible.
-
-**Refreshable Braille Displays:**
-These devices convert digital text to Braille in real-time, allowing users to read documents, emails, and websites.
-
-**Mobility Aids:**
-GPS navigation, white canes with sensors, and mobility apps help users navigate physical spaces with confidence.
-
-**Tips for Caregivers:**
-1. Invest in quality assistive technology
-2. Ensure regular training and support
-3. Encourage independent exploration
-4. Update software regularly
-5. Connect with support communities
-
-At our foundation, we provide training and support for all these technologies. Contact us to learn more.`,
-    author: 'Rohan Verma',
-    date: 'December 5, 2024',
-    category: 'article',
-    image: 'https://images.unsplash.com/photo-1497375638960-ca368c7231e4?q=80&w=800&auto=format&fit=crop',
-    readTime: 6,
-    tags: ['Technology', 'Education', 'Guide'],
-  },
-  {
-    id: 4,
-    title: 'Success Story: Ravi\'s Journey from Student to Tech Mentor',
-    excerpt: 'Read how Ravi transformed his life through our technology program and is now mentoring other visually impaired children.',
-    content: `Ravi came to us three years ago, hesitant and uncertain about his future. Today, he\'s a confident young programmer and mentor.
-
-**The Beginning:**
-At age 16, Ravi had already faced rejection from three mainstream schools. His parents were desperate to find a path forward when they discovered our foundation. Despite his initial doubts, Ravi enrolled in our Technology & Accessibility Training program.
-
-**The Transformation:**
-Within six months, Ravi had mastered screen reader technology. By the end of the first year, he was writing code. By year two, he had created his first accessible web application. Today, he\'s working as a junior developer at a tech startup and mentoring 10+ students.
-
-**His Advice:**
-"Don\'t let anyone tell you what you can\'t do. Your abilities are so much greater than you think. I went from feeling lost to finding my passion. You can too."
-
-**Impact:**
-Ravi\'s story has inspired 25 other students to pursue technology careers. His mentorship has resulted in 3 successful internship placements. Most importantly, he\'s proof that blindness is not a barrier to success in technology.`,
-    author: 'Priya Singh',
-    date: 'November 28, 2024',
-    category: 'news',
-    image: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800&auto=format&fit=crop',
-    readTime: 4,
-    tags: ['Success Story', 'Technology', 'Inspiration'],
-  },
-];
+const LocationBadge: React.FC<{ location?: string; className?: string }> = ({ location, className = '' }) => {
+  if (!location) return null;
+  return (
+    <span className={`inline-flex items-center gap-1 text-xs font-medium text-ocean-blue-700 ${className}`}>
+      <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+      {location}
+    </span>
+  );
+};
 
 interface BlogCardProps {
   post: BlogPost;
   onClick: (post: BlogPost) => void;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
-  const categoryColors: Record<string, string> = {
-    announcement: 'bg-blue-100 text-blue-800',
-    article: 'bg-purple-100 text-purple-800',
-    report: 'bg-green-100 text-green-800',
-    news: 'bg-orange-100 text-orange-800',
-  };
+const BlogCard: React.FC<BlogCardProps> = ({ post, onClick }) => (
+  <article
+    className="bg-white rounded-2xl shadow-soft hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group overflow-hidden border border-cream-200 flex flex-col"
+    onClick={() => onClick(post)}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onClick(post);
+      }
+    }}
+    aria-label={`Article: ${post.title}`}
+  >
+    <div className="relative overflow-hidden h-48">
+      <img
+        src={post.image}
+        alt={post.title}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      />
+      <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${CATEGORY_COLORS[post.category]}`}>
+        {post.category}
+      </span>
+    </div>
+    <div className="p-6 flex flex-col flex-grow">
+      <LocationBadge location={post.location} className="mb-2" />
+      <h3 className="text-lg font-bold text-ocean-blue-800 mb-2 line-clamp-2 group-hover:text-primary-red-600 transition-colors">{post.title}</h3>
+      <p className="text-neutral-600 text-sm mb-4 line-clamp-3 flex-grow">{post.excerpt}</p>
+      <div className="flex items-center justify-between text-xs text-neutral-500 mb-3">
+        <span>{post.date}</span>
+        <span>{post.readTime} min read</span>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {post.tags.map(tag => (
+          <span key={tag} className="text-xs bg-cream-100 text-neutral-700 px-2 py-1 rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  </article>
+);
 
-  return (
-    <article 
-      className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer group"
-      onClick={() => onClick(post)}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          onClick(post);
-        }
-      }}
-      aria-label={`Article: ${post.title}`}
-    >
-      <div className="relative overflow-hidden h-48">
-        <img 
-          src={post.image} 
-          alt={post.title} 
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold uppercase ${categoryColors[post.category]}`}>
-          {post.category}
-        </span>
+const renderParagraph = (paragraph: string, idx: number) => {
+  const trimmed = paragraph.trim();
+  // Bulleted list block
+  if (trimmed.startsWith('- ')) {
+    return (
+      <ul key={idx} className="list-disc pl-6 space-y-1">
+        {trimmed.split('\n').map((line, i) => (
+          <li key={i}>{line.replace(/^-\s*/, '')}</li>
+        ))}
+      </ul>
+    );
+  }
+  // Numbered list block
+  if (/^\d+\.\s/.test(trimmed)) {
+    return (
+      <ol key={idx} className="list-decimal pl-6 space-y-1">
+        {trimmed.split('\n').map((line, i) => (
+          <li key={i}>{line.replace(/^\d+\.\s*/, '')}</li>
+        ))}
+      </ol>
+    );
+  }
+  // Heading followed by body lines (e.g. **Highlights:**\n- ...)
+  if (trimmed.startsWith('**')) {
+    const [headingLine, ...rest] = trimmed.split('\n');
+    const heading = headingLine.replace(/\*\*/g, '');
+    const body = rest.join('\n').trim();
+    return (
+      <div key={idx}>
+        <h3 className="font-bold text-ocean-blue-800 mb-2">{heading}</h3>
+        {body && (body.startsWith('- ') || /^\d+\.\s/.test(body)
+          ? renderParagraph(body, idx * 1000)
+          : <p className="whitespace-pre-wrap">{body}</p>)}
       </div>
-      <div className="p-6">
-        <h3 className="text-lg font-bold text-ocean-blue-800 mb-2 line-clamp-2 group-hover:text-ocean-blue-600">{post.title}</h3>
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-        <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
-          <span>{post.author}</span>
-          <span>{post.readTime} min read</span>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {post.tags.map(tag => (
-            <span key={tag} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </article>
-  );
+    );
+  }
+  return <p key={idx} className="whitespace-pre-wrap">{trimmed}</p>;
 };
 
 const BlogPage: React.FC = () => {
@@ -188,50 +114,59 @@ const BlogPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredPosts = BLOG_ARTICLES.filter(post => {
+    const term = searchTerm.toLowerCase();
     const matchesCategory = !selectedCategory || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesSearch =
+      post.title.toLowerCase().includes(term) ||
+      post.excerpt.toLowerCase().includes(term) ||
+      (post.location ?? '').toLowerCase().includes(term) ||
+      post.tags.some(tag => tag.toLowerCase().includes(term));
     return matchesCategory && matchesSearch;
   });
 
   const categories = Array.from(new Set(BLOG_ARTICLES.map(post => post.category)));
+  const bengaluruCount = BLOG_ARTICLES.filter(p => p.tags.includes('Bengaluru') || (p.location ?? '').includes('Bengaluru')).length;
 
   return (
-    <div className="bg-white py-20">
+    <div className="bg-cream-50 py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <section className="text-center mb-16">
-          <h1 className="text-4xl font-extrabold text-ocean-blue-800 tracking-tight">News & Blog</h1>
-          <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-            Stay updated with our latest articles, announcements, and stories from the field.
+        <section className="text-center mb-14 animate-fade-up">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary-red-600">Stories from the field</p>
+          <h1 className="mt-3 text-4xl md:text-5xl font-extrabold text-ocean-blue-800 tracking-tight">News, Events & Blog</h1>
+          <p className="mt-4 text-xl text-neutral-600 max-w-3xl mx-auto">
+            What our children, families and volunteers have been up to across Bengaluru, and the lessons we are learning along the way.
+          </p>
+          <p className="mt-3 text-sm text-neutral-500">
+            {bengaluruCount} stories from activities in and around Bengaluru
           </p>
         </section>
 
         {/* Search and Filter Section */}
         <section className="mb-12">
-          <div className="mb-6">
+          <div className="mb-6 relative max-w-2xl mx-auto">
+            <ion-icon name="search-outline" class="absolute left-5 top-1/2 -translate-y-1/2 text-xl text-neutral-400" aria-hidden="true"></ion-icon>
             <input
               type="text"
-              placeholder="Search articles..."
+              placeholder="Search by title, place (e.g. Cubbon Park) or topic…"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-6 py-3 border-2 border-gray-200 rounded-lg focus:ring-ocean-blue-500 focus:border-ocean-blue-500 transition"
+              className="w-full pl-14 pr-6 py-3 bg-white border-2 border-cream-200 rounded-full focus:ring-2 focus:ring-ocean-blue-400 focus:border-ocean-blue-400 transition shadow-soft"
               aria-label="Search articles"
             />
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 justify-center">
             <button
               onClick={() => setSelectedCategory(null)}
               className={`px-6 py-2 rounded-full font-medium transition ${
                 selectedCategory === null
-                  ? 'bg-ocean-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-ocean-blue-600 text-white shadow-soft'
+                  : 'bg-white text-neutral-700 hover:bg-ocean-blue-50 border border-cream-200'
               }`}
               aria-pressed={selectedCategory === null}
             >
-              All Articles
+              All
             </button>
             {categories.map(category => (
               <button
@@ -239,8 +174,8 @@ const BlogPage: React.FC = () => {
                 onClick={() => setSelectedCategory(category === selectedCategory ? null : category)}
                 className={`px-6 py-2 rounded-full font-medium transition capitalize ${
                   selectedCategory === category
-                    ? 'bg-ocean-blue-600 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    ? 'bg-ocean-blue-600 text-white shadow-soft'
+                    : 'bg-white text-neutral-700 hover:bg-ocean-blue-50 border border-cream-200'
                 }`}
                 aria-pressed={selectedCategory === category}
               >
@@ -252,27 +187,32 @@ const BlogPage: React.FC = () => {
 
         {/* Featured Article */}
         {filteredPosts.length > 0 && (
-          <section className="mb-16 bg-ocean-blue-50 rounded-lg overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center p-8">
-              <img 
-                src={filteredPosts[0].image} 
-                alt={filteredPosts[0].title} 
-                className="w-full h-64 object-cover rounded-lg"
+          <section className="mb-16 bg-white rounded-3xl overflow-hidden shadow-soft-lg border border-cream-200">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+              <img
+                src={filteredPosts[0].image}
+                alt={filteredPosts[0].title}
+                className="w-full h-64 lg:h-full object-cover"
               />
-              <div>
-                <span className="text-sm font-bold text-ocean-blue-600 uppercase">{filteredPosts[0].category}</span>
-                <h2 className="text-3xl font-bold text-ocean-blue-800 mt-2 mb-4">{filteredPosts[0].title}</h2>
-                <p className="text-gray-600 mb-4">{filteredPosts[0].excerpt}</p>
-                <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                  <span>{filteredPosts[0].author}</span>
-                  <span>{filteredPosts[0].date}</span>
+              <div className="p-8 lg:p-12 flex flex-col justify-center">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${CATEGORY_COLORS[filteredPosts[0].category]}`}>{filteredPosts[0].category}</span>
+                  <LocationBadge location={filteredPosts[0].location} />
                 </div>
-                <button
-                  onClick={() => setSelectedPost(filteredPosts[0])}
-                  className="bg-ocean-blue-600 text-white px-6 py-2 rounded-lg hover:bg-ocean-blue-700 transition"
-                >
-                  Read Full Article
-                </button>
+                <h2 className="text-3xl font-bold text-ocean-blue-800 mt-4 mb-4 leading-tight">{filteredPosts[0].title}</h2>
+                <p className="text-neutral-600 mb-6 text-lg">{filteredPosts[0].excerpt}</p>
+                <div className="flex items-center justify-between text-sm text-neutral-500 mb-6">
+                  <span>{filteredPosts[0].author}</span>
+                  <span>{filteredPosts[0].date} · {filteredPosts[0].readTime} min read</span>
+                </div>
+                <div>
+                  <button
+                    onClick={() => setSelectedPost(filteredPosts[0])}
+                    className="bg-primary-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-red-700 transition shadow-soft hover:shadow-soft-lg"
+                  >
+                    Read the full story
+                  </button>
+                </div>
               </div>
             </div>
           </section>
@@ -280,71 +220,69 @@ const BlogPage: React.FC = () => {
 
         {/* Articles Grid */}
         <section>
-          {filteredPosts.length > 0 ? (
+          {filteredPosts.length > 1 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.slice(1).map(post => (
                 <BlogCard key={post.id} post={post} onClick={setSelectedPost} />
               ))}
             </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-600 text-lg">No articles found. Try adjusting your search or filters.</p>
+          ) : filteredPosts.length === 0 ? (
+            <div className="text-center py-16 bg-white rounded-2xl border border-cream-200">
+              <ion-icon name="leaf-outline" class="text-5xl text-ocean-blue-300" aria-hidden="true"></ion-icon>
+              <p className="text-neutral-600 text-lg mt-4">We couldn't find a story matching that. Try another word or clear the filters.</p>
             </div>
-          )}
+          ) : null}
         </section>
       </div>
 
       {/* Article Modal */}
       {selectedPost && (
-        <div 
-          className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+        <div
+          className="fixed inset-0 bg-ocean-blue-950/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
           onClick={() => setSelectedPost(null)}
           role="dialog"
           aria-modal="true"
           aria-labelledby="article-modal-title"
         >
-          <div 
-            className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+          <div
+            className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-soft-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center">
-              <h2 id="article-modal-title" className="text-2xl font-bold text-ocean-blue-800">{selectedPost.title}</h2>
+            <div className="sticky top-0 bg-white/95 backdrop-blur border-b border-cream-200 p-6 flex justify-between items-start gap-4 rounded-t-3xl">
+              <h2 id="article-modal-title" className="text-2xl font-bold text-ocean-blue-800 leading-snug">{selectedPost.title}</h2>
               <button
                 onClick={() => setSelectedPost(null)}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
+                className="flex-shrink-0 w-10 h-10 rounded-full bg-cream-100 hover:bg-cream-200 text-neutral-600 text-2xl leading-none flex items-center justify-center transition"
                 aria-label="Close"
               >
                 ×
               </button>
             </div>
-            <div className="p-6">
-              <img src={selectedPost.image} alt={selectedPost.title} className="w-full h-80 object-cover rounded-lg mb-6" />
-              <div className="mb-4 flex items-center justify-between text-sm text-gray-600">
-                <span>{selectedPost.author}</span>
-                <span>{selectedPost.date} • {selectedPost.readTime} min read</span>
+            <div className="p-6 md:p-8">
+              <img src={selectedPost.image} alt={selectedPost.title} className="w-full h-80 object-cover rounded-2xl mb-6" />
+              <div className="mb-6 flex flex-wrap items-center justify-between gap-2 text-sm text-neutral-600">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${CATEGORY_COLORS[selectedPost.category]}`}>{selectedPost.category}</span>
+                  <LocationBadge location={selectedPost.location} />
+                </div>
+                <span>{selectedPost.author} · {selectedPost.date} · {selectedPost.readTime} min read</span>
               </div>
-              <div className="prose max-w-none text-gray-700 space-y-4">
-                {selectedPost.content.split('\n\n').map((paragraph, idx) => (
-                  paragraph.startsWith('-') || paragraph.startsWith('**') ? (
-                    <div key={idx} className="whitespace-pre-wrap">{paragraph}</div>
-                  ) : (
-                    <p key={idx}>{paragraph}</p>
-                  )
-                ))}
+              <div className="prose max-w-none text-neutral-700 text-lg leading-relaxed space-y-5">
+                {selectedPost.content.split(/\n\s*\n/).map((paragraph, idx) => renderParagraph(paragraph, idx))}
               </div>
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-8 flex flex-wrap gap-2">
                 {selectedPost.tags.map(tag => (
-                  <span key={tag} className="bg-ocean-blue-100 text-ocean-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <span key={tag} className="bg-ocean-blue-50 text-ocean-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                     {tag}
                   </span>
                 ))}
               </div>
-              <div className="mt-6 pt-6 border-t border-gray-200">
+              <div className="mt-8 pt-6 border-t border-cream-200">
                 <button
                   onClick={() => setSelectedPost(null)}
-                  className="w-full bg-ocean-blue-600 text-white px-4 py-2 rounded-lg hover:bg-ocean-blue-700"
+                  className="w-full bg-ocean-blue-600 text-white px-4 py-3 rounded-full font-semibold hover:bg-ocean-blue-700 transition"
                 >
-                  Close
+                  Back to all stories
                 </button>
               </div>
             </div>

@@ -10,15 +10,26 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const navLinks = [
+  const navLinks: { label: string; page: Page; anchor?: string }[] = [
     { label: 'Home', page: Page.Home },
     { label: 'About Us', page: Page.About },
     { label: 'Programs', page: Page.Programs },
     { label: 'Impact', page: Page.ImpactStories },
     { label: 'Blog', page: Page.Blog },
     { label: 'Get Involved', page: Page.GetInvolved },
+    { label: 'CSR Partnerships', page: Page.GetInvolved, anchor: 'csr' },
     { label: 'Contact', page: Page.Contact },
   ];
+
+  const handleLink = (link: { page: Page; anchor?: string }) => {
+    onNavigate(link.page);
+    if (link.anchor) {
+      // Wait for the page to render before scrolling to the section
+      window.setTimeout(() => {
+        document.getElementById(link.anchor!)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  };
 
   const socialLinks = [
     { name: 'logo-facebook', href: 'https://facebook.com', label: 'Facebook' },
@@ -41,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <Logo className="h-9 w-auto" aria-hidden="true" />
               <h2 className="ml-3 text-xl font-bold">Nayana Arya Foundation</h2>
             </div>
-            <p className="mt-2 text-neutral-400">Creating vision for the children through education, empowerment, and compassion.</p>
+            <p className="mt-2 text-neutral-400">A small team in Bengaluru walking alongside visually impaired children and their families, with education, technology and care.</p>
             <div className="flex space-x-4 mt-4">
               {socialLinks.map((link) => (
                 <a 
@@ -63,7 +74,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <button 
-                    onClick={() => onNavigate(link.page)}
+                    onClick={() => handleLink(link)}
                     className="text-neutral-400 hover:text-primary-red-500 transition duration-300 focus:outline-none focus:underline"
                   >
                     {link.label}
@@ -76,14 +87,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <h3 className="text-lg font-semibold tracking-wider uppercase">Contact Us</h3>
             <ul className="mt-4 space-y-2 text-neutral-400">
               <li>📍 21 2nd Main KR Garden Murugeshpalaya, Bengaluru 560017</li>
-              <li><a href="mailto:admin@nayanaaryafoundation.org" className="hover:text-primary-red-500 transition">📧 admin@nayanaaryafoundation.org</a></li>
+              <li><a href="mailto:admin@nayanaaryafoundation.in" className="hover:text-primary-red-500 transition">📧 admin@nayanaaryafoundation.in</a></li>
               <li><a href="tel:+918310551091" className="hover:text-primary-red-500 transition">📞 +91 8310551091</a></li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold tracking-wider uppercase">Our Promise</h3>
             <p className="mt-4 text-neutral-400">
-              Your donations are securely processed. We are committed to financial transparency and making a real impact.
+              Every rupee is accounted for and reported openly. For CSR partnerships, please contact our admin team at the email or phone above.
             </p>
              <div className="mt-4 flex items-center space-x-2">
                 <ion-icon name="lock-closed-outline" class="text-xl text-green-400"></ion-icon>

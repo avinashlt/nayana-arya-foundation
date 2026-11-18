@@ -14,9 +14,17 @@ import { Page } from './types';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
+  // Pre-filled subject for the contact form (e.g. when arriving from the CSR section)
+  const [contactSubject, setContactSubject] = useState<string>('');
 
   const handleNavigate = useCallback((page: Page) => {
     setCurrentPage(page);
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleContactAdmin = useCallback((subject: string) => {
+    setContactSubject(subject);
+    setCurrentPage(Page.Contact);
     window.scrollTo(0, 0);
   }, []);
 
@@ -44,9 +52,9 @@ const App: React.FC = () => {
       case Page.Donate:
         return <DonatePage />;
       case Page.GetInvolved:
-        return <GetInvolvedPage />;
+        return <GetInvolvedPage onNavigate={handleNavigate} onContactAdmin={handleContactAdmin} />;
       case Page.Contact:
-        return <ContactPage />;
+        return <ContactPage initialSubject={contactSubject} onSubjectConsumed={() => setContactSubject('')} />;
       case Page.ImpactStories:
         return <ImpactStoriesPage />;
       case Page.Blog:

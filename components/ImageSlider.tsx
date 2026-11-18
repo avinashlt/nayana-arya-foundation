@@ -79,7 +79,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       {/* Next Button */}
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-cream-100/30 hover:bg-cream-100/50 text-cream-50 rounded-full p-3 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-terracotta-400"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white rounded-full p-3 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-primary-red-400"
         aria-label="Next slide"
       >
         <ion-icon name="chevron-forward" class="text-2xl" aria-hidden="true"></ion-icon>

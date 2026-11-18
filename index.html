@@ -28,12 +28,46 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
+              /* Soft, trustworthy teal-blue used for headings and calm accents */
+              'ocean-blue': {
+                '50': '#f1f8f8',
+                '100': '#dcefef',
+                '200': '#b9dede',
+                '300': '#8cc6c8',
+                '400': '#5aa7ab',
+                '500': '#3d8b90',
+                '600': '#2f7076',
+                '700': '#295b61',
+                '800': '#254b50',
+                '900': '#213f44',
+                '950': '#10272b',
+              },
+              /* Warm amber for hope, highlights and gentle call-outs */
+              'warm-amber': {
+                '50': '#fff9eb',
+                '100': '#feefc7',
+                '200': '#fddc8a',
+                '300': '#fcc34d',
+                '400': '#fbab24',
+                '500': '#f5890b',
+                '600': '#d96506',
+                '700': '#b44509',
+                '800': '#92350e',
+                '900': '#782d0f',
+                '950': '#451504',
+              },
+              /* Warm cream backgrounds instead of cold greys */
+              'cream': {
+                '50': '#fffdf9',
+                '100': '#fdf8f0',
+                '200': '#f8ede0',
+              },
               'primary-red': {
                 '50': '#fef2f2',
                 '100': '#fee2e2',
@@ -62,13 +96,34 @@
               }
             },
             fontFamily: {
-              sans: ['Poppins', 'sans-serif'],
-              heading: ['Poppins', 'sans-serif'],
+              sans: ['Nunito', 'Poppins', 'sans-serif'],
+              heading: ['Nunito', 'Poppins', 'sans-serif'],
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(37, 75, 80, 0.08), 0 2px 8px -2px rgba(37, 75, 80, 0.05)',
+              'soft-lg': '0 12px 40px -8px rgba(37, 75, 80, 0.14), 0 4px 12px -4px rgba(37, 75, 80, 0.06)',
+            },
+            keyframes: {
+              'fade-up': {
+                '0%': { opacity: '0', transform: 'translateY(16px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+            animation: {
+              'fade-up': 'fade-up 0.7s ease-out both',
             },
           }
         }
       }
     </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { background-color: #fffdf9; }
+      ::selection { background-color: #feefc7; color: #254b50; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      }
+    </style>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script type="importmap">

@@ -49,7 +49,7 @@ const DonatePage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Column: Messaging */}
             <div>
-                <img className="h-100 w-80" src="https://nayanaaryafoundation.org/assets/upi-sbi.jpeg" alt="" />
+                <img className="w-80 h-auto rounded-2xl shadow-soft mb-8" src="https://nayanaaryafoundation.in/assets/upi-sbi.jpeg" alt="" />
                 <h1 className="text-4xl font-extrabold text-ocean-blue-800 tracking-tight">Your Gift Creates Hope</h1>
                 <p className="mt-4 text-xl text-gray-600">
                     Every donation, no matter the size, directly supports our programs. You can make a direct bank transfer using the details provided to bring us closer to a world where every visually impaired child can succeed.
@@ -80,7 +80,7 @@ const DonatePage: React.FC = () => {
 
                 <div className="mt-8 text-center bg-warm-amber-50 p-4 rounded-lg border-l-4 border-warm-amber-400">
                     <p className="text-sm text-warm-amber-800">
-                        After transferring, please email us at <a href="mailto:admin@nayanaaryafoundation.org" className="font-semibold underline hover:text-warm-amber-900">admin@nayanaaryafoundation.org</a> with your transaction details so we can send you a receipt. Thank you for your generosity!
+                        After transferring, please email us at <a href="mailto:admin@nayanaaryafoundation.in" className="font-semibold underline hover:text-warm-amber-900">admin@nayanaaryafoundation.in</a> with your transaction details so we can send you a receipt. Thank you for your generosity!
                     </p>
                 </div>
             </div>

@@ -199,7 +199,7 @@ vercel
 
 For the organization:
 - 📍 Address: 21 2nd Main KR Garden Murugeshpalaya, Bengaluru 560017
-- 📧 Email: admin@nayanaaryafoundation.org
+- 📧 Email: admin@nayanaaryafoundation.in
 - 📱 Phone: +91 8310551091
 
 ## 📄 License

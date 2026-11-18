@@ -13,12 +13,12 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, onClick, variant = 'primary', size = 'md', className = '', type = 'button' }) => {
-  const baseStyles = 'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-0.5';
+  const baseStyles = 'font-semibold rounded-full shadow-soft focus:outline-none focus:ring-2 focus:ring-offset-2 transition duration-300 ease-in-out transform hover:-translate-y-0.5 hover:shadow-soft-lg';
   
   const variantStyles = {
     primary: 'bg-primary-red-600 text-white hover:bg-primary-red-700 focus:ring-primary-red-500',
-    secondary: 'bg-neutral-700 text-white hover:bg-neutral-800 focus:ring-neutral-600',
-    outline: 'bg-transparent border-2 border-neutral-700 text-neutral-700 hover:bg-neutral-700 hover:text-white focus:ring-neutral-600',
+    secondary: 'bg-ocean-blue-600 text-white hover:bg-ocean-blue-700 focus:ring-ocean-blue-500',
+    outline: 'bg-transparent border-2 border-ocean-blue-600 text-ocean-blue-700 hover:bg-ocean-blue-600 hover:text-white focus:ring-ocean-blue-500',
   };
 
   const sizeStyles = {

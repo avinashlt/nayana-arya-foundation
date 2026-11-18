@@ -111,7 +111,7 @@ const ImpactStoryCard: React.FC<ImpactStoryCardProps> = ({ story, onClick }) => 
           <span>{story.date}</span>
         </div>
         <p className="mt-4 text-sm font-semibold text-warm-amber-600 flex items-center">
-          <ion-icon name="leaf-outline" className="mr-2"></ion-icon>
+          <ion-icon name="leaf-outline" class="mr-2" aria-hidden="true"></ion-icon>
           Impact: {story.impact}
         </p>
       </div>
@@ -146,7 +146,7 @@ const ImpactStoriesPage: React.FC = () => {
             {STATISTICS.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="flex items-center justify-center mb-3">
-                  <ion-icon name={stat.icon} className="text-4xl text-ocean-blue-600"></ion-icon>
+                  <ion-icon name={stat.icon} class="text-4xl text-ocean-blue-600" aria-hidden="true"></ion-icon>
                 </div>
                 <div className="text-3xl font-bold text-ocean-blue-800">{stat.value}</div>
                 <p className="text-gray-600 mt-2">{stat.label}</p>
