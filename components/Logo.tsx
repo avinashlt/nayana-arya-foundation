@@ -1,55 +1,74 @@
 import React from 'react';
 
-const Logo: React.FC<{ className?: string }> = ({ className = '' }) => (
-  <svg
-    className={className}
-    viewBox="0 0 80 80"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-label="Logo"
-    role="img"
-  >
-    <defs>
-      <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{ stopColor: '#dc2626' }} />
-        <stop offset="100%" style={{ stopColor: '#b91c1c' }} />
-      </linearGradient>
-      <filter id="logoShadow" x="-50%" y="-50%" width="200%" height="200%">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.15" />
-      </filter>
-    </defs>
-    
-    {/* Main Icon - Eye with Vision */}
-    <g filter="url(#logoShadow)">
-      {/* Outer Eye Shape */}
-      <ellipse cx="34" cy="40" rx="28" ry="22" fill="none" stroke="#dc2626" strokeWidth="2.5" />
-      
-      {/* Inner Iris Circle with Gradient */}
-      <circle cx="34" cy="40" r="14" fill="url(#logoGradient)" />
-      
-      {/* Pupil - represents focus on vision */}
-      <circle cx="34" cy="40" r="7" fill="#7f1d1d" />
-      
-      {/* Light Highlight - represents hope and insight */}
-      <circle cx="38" cy="36" r="2.5" fill="#fafafa" opacity="0.9" />
-      
-      {/* Light Ray - symbolizes vision and enlightenment */}
+interface LogoProps {
+  className?: string;
+  /** 'dark' = for light backgrounds (default), 'light' = for dark backgrounds. */
+  tone?: 'dark' | 'light';
+}
+
+/**
+ * Nayana Arya Foundation mark.
+ *
+ * "Nayana" means eye. The mark is a single calligraphic eye whose lower lid
+ * curves upward into a gentle smile. The iris is a rising sun (warm amber into
+ * the brand red) with soft dawn rays above, a quiet symbol of hope and of a
+ * new way of seeing.
+ */
+const Logo: React.FC<LogoProps> = ({ className = '', tone = 'dark' }) => {
+  const lid = tone === 'dark' ? '#254b50' : '#ffffff';
+  const lidSoft = tone === 'dark' ? '#3d8b90' : 'rgba(255,255,255,0.7)';
+  const pupil = tone === 'dark' ? '#213f44' : '#10272b';
+  const rays = tone === 'dark' ? '#f5890b' : '#fcc34d';
+  const gradId = `nayana-iris-${tone}`;
+
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 120 100"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Nayana Arya Foundation logo"
+      role="img"
+      fill="none"
+    >
+      <defs>
+        <linearGradient id={gradId} x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#dc2626" />
+          <stop offset="55%" stopColor="#f5890b" />
+          <stop offset="100%" stopColor="#fcc34d" />
+        </linearGradient>
+      </defs>
+
+      {/* Dawn rays: three soft strokes rising above the eye */}
+      <g stroke={rays} strokeWidth="2.5" strokeLinecap="round" opacity="0.9">
+        <line x1="60" y1="14" x2="60" y2="4" />
+        <line x1="42" y1="19" x2="36.5" y2="10.5" />
+        <line x1="78" y1="19" x2="83.5" y2="10.5" />
+      </g>
+
+      {/* Iris: rising sun, clipped by the lids' shape through layering */}
+      <circle cx="60" cy="56" r="19" fill={`url(#${gradId})`} />
+      {/* Pupil */}
+      <circle cx="60" cy="56" r="8.5" fill={pupil} />
+      {/* Catchlight: the spark in the eye */}
+      <circle cx="65" cy="50" r="3" fill="#ffffff" opacity="0.95" />
+
+      {/* Upper lid: a confident calligraphic sweep */}
       <path
-        d="M 48 40 Q 65 40 75 40"
-        stroke="#dc2626"
-        strokeWidth="2"
-        fill="none"
+        d="M 12 58 C 28 26, 92 26, 108 58"
+        stroke={lid}
+        strokeWidth="5"
         strokeLinecap="round"
-        opacity="0.7"
       />
-      
-      {/* Accent Dots - represent children/community */}
-      <circle cx="70" cy="35" r="1.5" fill="#b91c1c" opacity="0.6" />
-      <circle cx="72" cy="42" r="1.5" fill="#b91c1c" opacity="0.6" />
-      <circle cx="68" cy="48" r="1.5" fill="#b91c1c" opacity="0.6" />
-    </g>
-    
-    {/* Organization Name */}
-  </svg>
-);
+
+      {/* Lower lid: lighter, meeting the upper lid at the corners and curving into a gentle smile */}
+      <path
+        d="M 12 58 C 30 86, 90 86, 108 58"
+        stroke={lidSoft}
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+};
 
 export default Logo;

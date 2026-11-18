@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <div className="flex items-center mb-2">
-              <Logo className="h-9 w-auto" aria-hidden="true" />
+              <Logo className="h-9 w-auto" tone="light" aria-hidden="true" />
               <h2 className="ml-3 text-xl font-bold">Nayana Arya Foundation</h2>
             </div>
             <p className="mt-2 text-neutral-400">A small team in Bengaluru walking alongside visually impaired children and their families, with education, technology and care.</p>
