@@ -1,9 +1,10 @@
 
 export const TEAM_MEMBERS = [
-  { name: 'Nayana Arya', role: 'Founder & CEO', bio: 'Nayana founded the organization with a passion for empowering visually impaired children, driven by personal experiences.', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop' },
-  { name: 'Rohan Verma', role: 'Director of Programs', bio: 'Rohan has over 15 years of experience in educational program development for children with special needs.', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop' },
-  { name: 'Priya Singh', role: 'Head of Community Outreach', bio: 'Priya connects our mission with volunteers and donors, building a strong community of support.', image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=400&auto=format&fit=crop' },
-  { name: 'Anil Kumar', role: 'Chief Financial Officer', bio: 'Anil ensures our financial transparency and sustainability, making every donation count.', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop' },
+  // Portraits: free-to-use Unsplash photos of people of Indian origin, cropped to head-and-shoulders via Unsplash focal-point params.
+  { name: 'Nayana Arya', role: 'Founder & CEO', bio: 'Nayana founded the organization with a passion for empowering visually impaired children, driven by personal experiences.', image: 'https://images.unsplash.com/photo-1685540942176-90a32486ba6f?q=80&w=400&h=400&auto=format&fit=crop&crop=focalpoint&fp-x=0.45&fp-y=0.35&fp-z=1.4' },
+  { name: 'Rohan Verma', role: 'Director of Programs', bio: 'Rohan has over 15 years of experience in educational program development for children with special needs.', image: 'https://images.unsplash.com/photo-1770359993283-a2c2f386584e?q=80&w=400&h=400&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.17&fp-z=2.6' },
+  { name: 'Priya Singh', role: 'Head of Community Outreach', bio: 'Priya connects our mission with volunteers and donors, building a strong community of support.', image: 'https://images.unsplash.com/photo-1729101144075-0abcb05bfdc4?q=80&w=400&h=400&auto=format&fit=crop&crop=focalpoint&fp-x=0.55&fp-y=0.4&fp-z=1.3' },
+  { name: 'Anil Kumar', role: 'Chief Financial Officer', bio: 'Anil ensures our financial transparency and sustainability, making every donation count.', image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&h=400&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.26&fp-z=2.1' },
 ];
 
 export type BlogCategory = 'announcement' | 'article' | 'report' | 'news' | 'event';
